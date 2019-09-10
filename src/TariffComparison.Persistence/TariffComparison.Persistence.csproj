@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AssemblyName>TariffComparison.Persistence</AssemblyName>
+    <RootNamespace>TariffComparison.Persistence</RootNamespace>
+  </PropertyGroup>
+
+</Project>

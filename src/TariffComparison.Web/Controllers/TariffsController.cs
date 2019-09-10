@@ -1,0 +1,37 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using TariffComparison.Models;
+using TariffComparison.Persistence.Entities;
+using TariffComparison.Persistence.Repositories;
+
+namespace TariffComparison.Controllers
+{
+    [Route("api/v1/tariffs")]
+    [ApiController]
+    public class TariffsController : ControllerBase
+    {
+        private ITariffRepository _tariffRepository;
+
+        public TariffsController(ITariffRepository tariffRepository)
+        {
+            _tariffRepository = tariffRepository;
+        }
+
+        [HttpGet("byAnnualConsumption/{annualConsumption}")]
+        public ActionResult<IEnumerable<TariffDTO>> GetTariffsByAnnualConsumption(double annualConsumption)
+        {
+            IEnumerable<Tariff> allTariffs = _tariffRepository.GetAll();
+
+            IEnumerable<TariffDTO> tariffDTOs = allTariffs.Select(tariff => new TariffDTO
+            {
+                Name = tariff.Name,
+                AnnualCosts = tariff.AnnualCosts,
+            });
+
+            return Ok(tariffDTOs);
+        }
+    }
+}
