@@ -14,6 +14,12 @@ namespace TariffComparison.Persistence.Entities
 
         public double CalculateCosts(int periodInMonths, double consumptionInKWh)
         {
+            if (periodInMonths < 0)
+                throw new ArgumentException("Period must not be negative");
+
+            if (consumptionInKWh < 0)
+                throw new ArgumentException("Consumption must not be negative");
+
             double baseCosts = AnnualBaseCosts / 12 * periodInMonths;
 
             if (consumptionInKWh / periodInMonths <= AnnualBaseCostsLimitInKWh / 12)
