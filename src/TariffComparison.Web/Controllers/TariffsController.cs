@@ -20,7 +20,7 @@ namespace TariffComparison.Controllers
             _tariffRepository = tariffRepository;
         }
 
-        [HttpGet("byAnnualConsumption/{annualConsumption}")]
+        [HttpGet("by-annual-consumption/{annualConsumption}")]
         public ActionResult<IEnumerable<TariffDTO>> GetTariffsByAnnualConsumption(double annualConsumption)
         {
             IEnumerable<Tariff> allTariffs = _tariffRepository.GetAll();
