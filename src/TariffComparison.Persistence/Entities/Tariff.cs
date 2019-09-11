@@ -6,8 +6,10 @@ namespace TariffComparison.Persistence.Entities
 {
     public class Tariff
     {
+        public delegate double TariffCostsCalculation(int periodInMonths, double consumptionInKWh);
+
         public string Name { get; set; }
 
-        public double AnnualCosts { get; set; }
+        public TariffCostsCalculation CostsCalculation { get; set; }
     }
 }
