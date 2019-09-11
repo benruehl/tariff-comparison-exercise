@@ -28,7 +28,7 @@ namespace TariffComparison.Controllers
             IEnumerable<TariffDTO> tariffDTOs = allTariffs.Select(tariff => new TariffDTO
             {
                 Name = tariff.Name,
-                AnnualCosts = tariff.CostsCalculation?.Invoke(periodInMonths: 12, annualConsumption) ?? double.NaN,
+                AnnualCosts = tariff.CostsCalculation?.CalculateCosts(periodInMonths: 12, annualConsumption) ?? double.NaN,
             });
 
             return Ok(tariffDTOs);
