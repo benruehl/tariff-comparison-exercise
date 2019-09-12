@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using TariffComparison.Web.DTOs;
 
 namespace TariffComparison.Web.Middlewares
 {
@@ -33,7 +34,7 @@ namespace TariffComparison.Web.Middlewares
 
         private Task HandleExceptionAsync(HttpContext context, Exception e, IOptions<MvcJsonOptions> jsonOptions)
         {
-            string resultBody = JsonConvert.SerializeObject(new { Message = e.Message }, jsonOptions.Value.SerializerSettings);
+            string resultBody = JsonConvert.SerializeObject(new ErrorDTO(e.Message), jsonOptions.Value.SerializerSettings);
 
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             return context.Response.WriteAsync(resultBody);
