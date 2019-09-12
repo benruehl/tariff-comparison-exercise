@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using TariffComparison.Models;
 using TariffComparison.Persistence.Entities;
 using TariffComparison.Persistence.Repositories;
+using TariffComparison.Web.DTOs;
 
 namespace TariffComparison.Controllers
 {
@@ -23,6 +24,9 @@ namespace TariffComparison.Controllers
         [HttpGet("by-annual-consumption/{annualConsumption}")]
         public ActionResult<IEnumerable<TariffDTO>> GetTariffsByAnnualConsumption(double annualConsumption)
         {
+            if (annualConsumption < 0)
+                return BadRequest(new ErrorDTO("Annual comsumption must not be negative"));
+
             IEnumerable<Tariff> allTariffs = _tariffRepository.GetAll();
 
             IEnumerable<TariffDTO> tariffDTOs = allTariffs.Select(tariff => new TariffDTO
