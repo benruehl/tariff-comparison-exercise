@@ -4,10 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TariffComparison.Controllers;
-using TariffComparison.Models;
 using TariffComparison.Persistence.Entities;
 using TariffComparison.Persistence.Repositories;
+using TariffComparison.Web.Controllers;
+using TariffComparison.Web.DTOs;
 using Xunit;
 
 namespace TariffComparison.Web.Tests.Controllers

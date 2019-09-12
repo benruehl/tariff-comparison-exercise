@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TariffComparison.Models;
 using TariffComparison.Persistence.Entities;
 using TariffComparison.Persistence.Repositories;
 using TariffComparison.Web.DTOs;
 
-namespace TariffComparison.Controllers
+namespace TariffComparison.Web.Controllers
 {
     [Route("api/v1/tariffs")]
     [ApiController]

@@ -13,7 +13,7 @@ using Microsoft.Extensions.Options;
 using TariffComparison.Persistence.Repositories;
 using TariffComparison.Web.Middlewares;
 
-namespace TariffComparison
+namespace TariffComparison.Web
 {
     public class Startup
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TariffComparison.Models
+namespace TariffComparison.Web.DTOs
 {
     public class TariffDTO
     {
