@@ -23,6 +23,14 @@ namespace TariffComparison.Web.Tests.Controllers
         }
 
         [Fact]
+        public void GetTariffsByAnnualConsumption_GivenNegativeConsumption_ReturnsBadRequest()
+        {
+            TariffsController controller = CreateController();
+            ActionResult<IEnumerable<TariffDTO>> actionResult = controller.GetTariffsByAnnualConsumption(annualConsumption: -4500);
+            Assert.IsAssignableFrom<BadRequestObjectResult>(actionResult.Result);
+        }
+
+        [Fact]
         public void GetTariffsByAnnualConsumption_Given4500KWh_ReturnsTariffDTOs()
         {
             TariffsController controller = CreateController();
