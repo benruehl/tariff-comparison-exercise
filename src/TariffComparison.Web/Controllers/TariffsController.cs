@@ -33,7 +33,7 @@ namespace TariffComparison.Controllers
 
             IEnumerable<TariffDTO> sortedTariffDTOs = tariffDTOs.OrderBy(tariff => tariff.AnnualCosts);
 
-            return Ok(sortedTariffDTOs);
+            return Ok(sortedTariffDTOs.ToArray());
         }
     }
 }
