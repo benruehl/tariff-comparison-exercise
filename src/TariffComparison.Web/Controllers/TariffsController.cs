@@ -31,7 +31,9 @@ namespace TariffComparison.Controllers
                 AnnualCosts = tariff.CostsCalculation?.CalculateCosts(periodInMonths: 12, annualConsumption) ?? double.NaN,
             });
 
-            return Ok(tariffDTOs);
+            IEnumerable<TariffDTO> sortedTariffDTOs = tariffDTOs.OrderBy(tariff => tariff.AnnualCosts);
+
+            return Ok(sortedTariffDTOs);
         }
     }
 }
