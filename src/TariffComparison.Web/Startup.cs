@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using TariffComparison.Persistence.Repositories;
+using TariffComparison.Web.Middlewares;
 
 namespace TariffComparison
 {
@@ -44,6 +45,7 @@ namespace TariffComparison
             }
 
             app.UseHttpsRedirection();
+            app.UseMiddleware(typeof(ErrorHandlingMiddleware));
             app.UseMvc();
         }
     }
